@@ -2,7 +2,7 @@ import { v4 } from "uuid"
 import { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "store/createAppSlice"
 
-import { RandomJokeState, JokeInfo } from "./types"
+import { RandomJokeState, JokeResponse } from "./types"
 
 const randomJokeInitialState: RandomJokeState = {
   data: [],
@@ -40,7 +40,7 @@ export const randomJokeSlice = createAppSlice({
           state.status = "loading"
         },
         // fulfilled -  будем писать действия, которые выполняются после успешно выполненного запроса
-        fulfilled: (state: RandomJokeState, action: PayloadAction<any>) => {
+        fulfilled: (state: RandomJokeState, action: PayloadAction<JokeResponse>) => {
           console.log("Fulfilled", action)
           state.status = "success"
           state.data = [
