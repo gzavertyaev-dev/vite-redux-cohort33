@@ -22,7 +22,7 @@ export const randomJokeSlice = createAppSlice({
         const response = await fetch(
           "https://official-joke-api.appspot.com/random_joke"
         )
-        const result = response.json()
+        const result =  await response.json()
 
         if (!response.ok) {
           // Данные переходят в rejected, если response.ok === false
